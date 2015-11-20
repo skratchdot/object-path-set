@@ -1,7 +1,8 @@
 'use strict';
 
 var setPath = function (obj, path, value, delimiter) {
-	var arr, key;
+	var arr;
+	var key;
 	if (!obj || typeof obj !== 'object') {
 		obj = {};
 	}

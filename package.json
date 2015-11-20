@@ -1,6 +1,6 @@
 {
   "name": "object-path-set",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "set values in javascript objects by specifying a path",
   "main": "index.js",
   "scripts": {
@@ -17,10 +17,15 @@
     "url": "https://github.com/skratchdot/object-path-set"
   },
   "devDependencies": {
-    "gulp": "^3.8.1",
-    "gulp-jshint": "^1.6.3",
-    "gulp-nodeunit": "0.0.5"
+    "chai": "^3.4.1",
+    "coveralls": "^2.11.4",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.1.0",
+    "gulp-istanbul": "^0.10.2",
+    "gulp-mocha": "^2.2.0",
+    "isparta": "^4.0.0"
   },
+  "tonicExampleFilename": ".tonic.example.js",
   "keywords": [
     "object",
     "path",

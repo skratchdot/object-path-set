@@ -1,25 +1,8 @@
 'use strict';
-/*
-======== A Handy Little Nodeunit Reference ========
-https://github.com/caolan/nodeunit
-
-Test methods:
-	test.expect(numAssertions)
-	test.done()
-Test assertions:
-	test.ok(value, [message])
-	test.equal(actual, expected, [message])
-	test.notEqual(actual, expected, [message])
-	test.deepEqual(actual, expected, [message])
-	test.notDeepEqual(actual, expected, [message])
-	test.strictEqual(actual, expected, [message])
-	test.notStrictEqual(actual, expected, [message])
-	test.throws(block, [error], [message])
-	test.doesNotThrow(block, [error], [message])
-	test.ifError(value)
-*/
+var expect = require('chai').expect;
 var setPath = require('./index.js');
 var now = new Date();
+var obj;
 var getDefaultObject = function () {
 	return {
 		nested: {
@@ -39,58 +22,63 @@ var getDefaultObject = function () {
 	};
 };
 
-exports['object-path-set'] = {
-	setUp: function (done) {
-		// setup here
-		done();
-	},
-	'types': function (test) {
-		var obj = getDefaultObject();
-		test.expect(5);
-		obj = setPath(obj, 'dataUndefined', 'newValue');
-		test.equal(typeof obj.dataUndefined, 'string', 'typeof dataUndefined is wrong');
-		obj = setPath(obj, 'dataDate', 'newValue');
-		test.equal(typeof obj.dataDate, 'string', 'typeof dataDate is wrong');
-		obj = setPath(obj, 'nested', 'newValue');
-		test.equal(typeof obj.nested, 'string', 'typeof nested is wrong');
-		obj = setPath(obj, 'nested.foo', 'newValue');
-		test.equal(typeof obj.nested, 'object', 'typeof nested is wrong');
-		test.equal(typeof obj.nested.foo, 'string', 'typeof nested.foo is wrong');
-		test.done();
-	},
-	'convert to object': function (test) {
-		test.expect(5);
-		test.deepEqual(setPath(1234, 'a', 42), {a: 42}, '1234 should have been converted to an object');
-		test.deepEqual(setPath(null, 'a', 42), {a: 42}, 'null should have been converted to an object');
-		test.deepEqual(setPath(true, 'a', 42), {a: 42}, 'true should have been converted to an object');
-		test.deepEqual(setPath({a: 123}, 'a.b', 42), {a: {b: 42}}, '{a: 123} should have been converted to an object');
-		test.deepEqual(setPath(null, 'a.b.c.d', null), {a:{b:{c:{d:null}}}}, 'null should have been converted to an object with a.b.c.d');
-		test.done();
-	},
-	'delimiter': function (test) {
-		test.expect(3);
-		test.deepEqual(setPath({}, 'a|b|c|d', 42), {"a|b|c|d": 42}, 'should not have used my custom delimiter');
-		test.deepEqual(setPath({}, 'a|b|c|d', 42, '|'), {a:{b:{c:{d:42}}}}, 'should have used my custom delimiter');
-		test.deepEqual(setPath({}, 'a.b.c.d', 42, '|'), {"a.b.c.d": 42}, 'should have used my custom delimiter');
-		test.done();
-	},
-	'values': function (test) {
-		test.expect(4);
-		test.deepEqual(setPath({}, 'a.b', 42), {a:{b: 42}}, 'expecting a number');
-		test.deepEqual(setPath({}, 'a.b', undefined), {a:{b: undefined}}, 'expecting undefined');
-		test.deepEqual(setPath({}, 'a.b', true), {a:{b: true}}, 'expecting a boolean');
-		test.deepEqual(setPath({}, 'a.b', 'wow'), {a:{b: 'wow'}}, 'expecting a string');
-		test.done();
-	},
-	'multiple sets': function (test) {
-		var obj;
-		test.expect(1);
+describe('object-path-set', function () {
+	beforeEach(function () {
+		obj = getDefaultObject();
+	});
+	it('should be able to set and overwrite types', function () {
+		var newValue = 'newValue';
+
+		obj = setPath(obj, 'dataUndefined', newValue);
+		expect(obj.dataUndefined).to.be.a.string;
+		expect(obj.dataUndefined).to.equal(newValue);
+
+		obj = setPath(obj, 'dataDate', newValue);
+		expect(obj.dataDate).to.be.a.string;
+		expect(obj.dataDate).to.equal(newValue);
+
+		obj = setPath(obj, 'nested', newValue);
+		expect(obj.nested).to.be.a.string;
+		expect(obj.nested).to.equal(newValue);
+
+		obj = setPath(obj, 'nested.foo', newValue);
+		expect(obj.nested).to.be.an.object;
+		expect(obj.nested.foo).to.be.a.string;
+		expect(obj.nested.foo).to.equal(newValue);
+	});
+	it('should covert things to objects', function () {
+		expect(setPath(1234, 'a', 42)).to.deep.equal({a: 42});
+		expect(setPath(null, 'a', 42)).to.deep.equal({a: 42});
+		expect(setPath(true, 'a', 42)).to.deep.equal({a: 42});
+		expect(setPath({a: 123}, 'a.b', 42)).to.deep.equal({a: {b: 42}});
+		expect(setPath(null, 'a.b.c.d', null)).to.deep.equal({a:{b:{c:{d:null}}}});
+	});
+	it('should be able to use custom delimiters', function () {
+		expect(setPath({}, 'a|b|c|d', 42)).to.deep.equal({'a|b|c|d': 42});
+		expect(setPath({}, 'a|b|c|d', 42, '|')).to.deep.equal({a:{b:{c:{d:42}}}});
+		expect(setPath({}, 'a.b.c.d', 42, '|')).to.deep.equal({'a.b.c.d': 42});
+	});
+	it('should set the correct values', function () {
+		expect(setPath({}, 'a.b', 42)).to.deep.equal({a:{b: 42}});
+		expect(setPath({}, 'a.b', undefined)).to.deep.equal({a:{b: undefined}});
+		expect(setPath({}, 'a.b', true)).to.deep.equal({a:{b: true}});
+		expect(setPath({}, 'a.b', 'wow')).to.deep.equal({a:{b: 'wow'}});
+	});
+	it('should be able to be called multiple times', function () {
+		obj = {};
 		obj = setPath(obj, 'a', 42);
 		obj = setPath(obj, 'b', true);
 		obj = setPath(obj, 'c.d', {});
 		obj = setPath(obj, 'c.d.e', {});
 		obj = setPath(obj, 'c.d.f', 'foo');
-		test.deepEqual(obj, {a: 42, b: true, c:{d:{e:{}, f:'foo'}}}, 'should have created a deep nested object');
-		test.done();
-	}
-};
+		expect(obj).to.deep.equal({a: 42, b: true, c:{d:{e:{}, f:'foo'}}});
+	});
+	it('should return the default object when key is not a string', function () {
+		var defaultValue = Math.random();
+		expect(setPath(obj, {}, defaultValue)).to.deep.equal(obj);
+		expect(setPath(obj, [], defaultValue)).to.deep.equal(obj);
+		expect(setPath(obj, null, defaultValue)).to.deep.equal(obj);
+		expect(setPath(obj, 11, defaultValue)).to.deep.equal(obj);
+		expect(setPath(obj, undefined, defaultValue)).to.deep.equal(obj);
+	});
+});
