@@ -1,5 +1,7 @@
 .git*
-_ignore/
+.idea/
+.nyc_output/
+coverage/
 .DS_Store
 .gitignore
 .npm-debug.log

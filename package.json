@@ -4,7 +4,13 @@
   "description": "set values in javascript objects by specifying a path",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test"
+    "changelog": "github_changelog_generator -u skratchdot -p object-path-set",
+    "clean": "rimraf .nyc_output/ coverage/",
+    "cover": "nyc npm test",
+    "coveralls": "cat coverage/lcov.info | coveralls --verbose",
+    "lint": "eslint *.js",
+    "test": "mocha test.js",
+    "prepublish": "npm-run-all lint test"
   },
   "author": "skratchdot",
   "license": "MIT",
@@ -17,15 +23,26 @@
     "url": "https://github.com/skratchdot/object-path-set"
   },
   "devDependencies": {
-    "chai": "^3.4.1",
-    "coveralls": "^2.11.4",
-    "gulp": "^3.9.0",
-    "gulp-eslint": "^1.1.0",
-    "gulp-istanbul": "^0.10.2",
-    "gulp-mocha": "^2.2.0",
-    "isparta": "^4.0.0"
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.12",
+    "eslint": "^3.4.0",
+    "mocha": "^3.0.2",
+    "npm-run-all": "^3.0.0",
+    "nyc": "^8.1.0",
+    "rimraf": "^2.5.4"
   },
   "tonicExampleFilename": ".tonic.example.js",
+  "nyc": {
+    "all": true,
+    "include": [
+      "index.js"
+    ],
+    "reporter": [
+      "text",
+      "html",
+      "lcovonly"
+    ]
+  },
   "keywords": [
     "object",
     "path",

@@ -36,6 +36,11 @@ obj = setPath(obj, 'foo.invalidKey', 'cool'); // result: {foo:{bar:'newValue',in
 obj = setPath(obj, 'foo|bar', 'again', '|'); // result: {foo:{bar:'again',invalidKey: 'cool'}}
 ```
 
+
+## Links
+
+- [Source Code](https://github.com/skratchdot/object-path-set)
+- [Changelog](https://github.com/skratchdot/object-path-set/blob/master/CHANGELOG.md)
 - [Live example on Tonic](https://tonicdev.com/npm/object-path-set)
 
 
