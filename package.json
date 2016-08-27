@@ -9,8 +9,11 @@
     "cover": "nyc npm test",
     "coveralls": "cat coverage/lcov.info | coveralls --verbose",
     "lint": "eslint *.js",
+    "prepublish": "npm-run-all lint test",
     "test": "mocha test.js",
-    "prepublish": "npm-run-all lint test"
+    "watch": "npm-run-all clean --parallel watch:test watch:lint",
+    "watch:lint": "watch 'npm run lint' .",
+    "watch:test": "npm run test -- -w"
   },
   "author": "skratchdot",
   "license": "MIT",
