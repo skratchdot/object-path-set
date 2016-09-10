@@ -1,6 +1,6 @@
 {
   "name": "object-path-set",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "set values in javascript objects by specifying a path",
   "main": "index.js",
   "scripts": {
