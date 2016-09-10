@@ -28,9 +28,9 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "coveralls": "^2.11.12",
-    "eslint": "^3.4.0",
+    "eslint": "^3.5.0",
     "mocha": "^3.0.2",
-    "npm-run-all": "^3.0.0",
+    "npm-run-all": "^3.1.0",
     "nyc": "^8.1.0",
     "rimraf": "^2.5.4"
   },
