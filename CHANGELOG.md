@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.0.0](https://github.com/skratchdot/object-path-set/tree/1.0.0) (2016-09-10)
+[Full Changelog](https://github.com/skratchdot/object-path-set/compare/0.0.2...1.0.0)
+
 ## [0.0.2](https://github.com/skratchdot/object-path-set/tree/0.0.2) (2015-11-20)
 [Full Changelog](https://github.com/skratchdot/object-path-set/compare/0.0.1...0.0.2)
 
