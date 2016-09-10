@@ -7,11 +7,14 @@ var setPath = function (obj, path, value, delimiter) {
 		obj = {};
 	}
 	if (typeof path === 'string') {
-		arr = path.split(delimiter || '.');
+		path = path.split(delimiter || '.');
+	}
+	if (Array.isArray(path) && path.length > 0) {
+		arr = path;
 		key = arr[0];
 		if (arr.length > 1) {
 			arr.shift();
-			obj[key] = setPath(obj[key], arr.join(delimiter || '.'), value, delimiter);
+			obj[key] = setPath(obj[key], arr, value, delimiter);
 		} else {
 			obj[key] = value;
 		}
