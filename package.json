@@ -4,8 +4,8 @@
   "description": "set values in javascript objects by specifying a path",
   "main": "index.js",
   "scripts": {
-    "build": "npm-run-all format lint cover",
-    "changelog": "github_changelog_generator -u skratchdot -p object-path-get",
+    "build": "npm-run-all format lint cover changelog",
+    "changelog": "conventional-changelog -i CHANGELOG.md -s -u -r 0",
     "clean": "rimraf coverage/",
     "cover": "npm test -- --coverage",
     "coveralls": "cat coverage/lcov.info | coveralls --verbose",
@@ -28,6 +28,7 @@
     "url": "https://github.com/skratchdot/object-path-set"
   },
   "devDependencies": {
+    "conventional-changelog-cli": "^1.3.14",
     "coveralls": "^3.0.0",
     "eslint": "^4.18.1",
     "jest": "^22.4.2",
