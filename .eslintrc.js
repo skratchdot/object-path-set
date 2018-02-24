@@ -1,9 +1,6 @@
 // adapted from: https://github.com/Khan/style-guides/pull/25
 module.exports = {
 	"extends": "eslint:recommended",
-	"ecmaFeatures": {
-		"modules": false
-	},
 	"env": {
 		"browser": true,
 		"node": true,
@@ -52,10 +49,7 @@ module.exports = {
 		"quotes": [2, "single"],
 		"semi": [2, "always"],
 		"space-before-blocks": 2,
-		"space-before-function-paren": [2, {
-			"anonymous": "always",
-			"named": "never"
-		}],
+		// "space-before-function-paren": 2,
 		"space-infix-ops": 2,
 		"strict": [0, "never"],
 		"valid-jsdoc": 2

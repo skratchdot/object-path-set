@@ -4,12 +4,14 @@
   "description": "set values in javascript objects by specifying a path",
   "main": "index.js",
   "scripts": {
-    "changelog": "github_changelog_generator -u skratchdot -p object-path-set",
+    "build": "npm-run-all format lint cover",
+    "changelog": "github_changelog_generator -u skratchdot -p object-path-get",
     "clean": "rimraf coverage/",
     "cover": "npm test -- --coverage",
     "coveralls": "cat coverage/lcov.info | coveralls --verbose",
+    "format": "prettier --single-quote --write *.js",
     "lint": "eslint *.js",
-    "prepublish": "npm-run-all lint test",
+    "prepublish": "npm run build",
     "test": "jest test.js",
     "watch": "npm-run-all clean --parallel watch:test watch:lint",
     "watch:lint": "watch 'npm run lint' .",
@@ -30,13 +32,25 @@
     "eslint": "^4.18.1",
     "jest": "^22.4.2",
     "npm-run-all": "^4.1.2",
+    "prettier": "^1.10.2",
     "rimraf": "^2.6.2"
   },
   "tonicExampleFilename": ".tonic.example.js",
   "jest": {
     "verbose": true,
-    "collectCoverageFrom": ["index.js"],
-    "coverageReporters": ["text", "html", "lcovonly"]
+    "collectCoverageFrom": [
+      "index.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "html",
+      "lcovonly"
+    ]
   },
-  "keywords": ["object", "path", "helper", "deep"]
+  "keywords": [
+    "object",
+    "path",
+    "helper",
+    "deep"
+  ]
 }
