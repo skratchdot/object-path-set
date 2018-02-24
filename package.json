@@ -5,15 +5,15 @@
   "main": "index.js",
   "scripts": {
     "changelog": "github_changelog_generator -u skratchdot -p object-path-set",
-    "clean": "rimraf .nyc_output/ coverage/",
-    "cover": "nyc npm test",
+    "clean": "rimraf coverage/",
+    "cover": "npm test -- --coverage",
     "coveralls": "cat coverage/lcov.info | coveralls --verbose",
     "lint": "eslint *.js",
     "prepublish": "npm-run-all lint test",
-    "test": "mocha test.js",
+    "test": "jest test.js",
     "watch": "npm-run-all clean --parallel watch:test watch:lint",
     "watch:lint": "watch 'npm run lint' .",
-    "watch:test": "npm run test -- -w"
+    "watch:test": "npm run test -- --watch"
   },
   "author": "skratchdot",
   "license": "MIT",
@@ -26,30 +26,17 @@
     "url": "https://github.com/skratchdot/object-path-set"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "coveralls": "^2.11.12",
-    "eslint": "^3.5.0",
-    "mocha": "^3.0.2",
-    "npm-run-all": "^3.1.0",
-    "nyc": "^8.1.0",
-    "rimraf": "^2.5.4"
+    "coveralls": "^3.0.0",
+    "eslint": "^4.18.1",
+    "jest": "^22.4.2",
+    "npm-run-all": "^4.1.2",
+    "rimraf": "^2.6.2"
   },
   "tonicExampleFilename": ".tonic.example.js",
-  "nyc": {
-    "all": true,
-    "include": [
-      "index.js"
-    ],
-    "reporter": [
-      "text",
-      "html",
-      "lcovonly"
-    ]
+  "jest": {
+    "verbose": true,
+    "collectCoverageFrom": ["index.js"],
+    "coverageReporters": ["text", "html", "lcovonly"]
   },
-  "keywords": [
-    "object",
-    "path",
-    "helper",
-    "deep"
-  ]
+  "keywords": ["object", "path", "helper", "deep"]
 }

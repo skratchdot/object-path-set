@@ -7,7 +7,7 @@ module.exports = {
 	"env": {
 		"browser": true,
 		"node": true,
-		"mocha": true
+		"jest": true
 	},
 	"rules": {
 		"arrow-parens": [2, "always"],
