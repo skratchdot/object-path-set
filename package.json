@@ -39,7 +39,7 @@
     "prettier": "^1.10.2",
     "rimraf": "^2.6.2"
   },
-  "tonicExampleFilename": ".tonic.example.js",
+  "runkitExampleFilename": ".runkit.example.js",
   "jest": {
     "verbose": true,
     "collectCoverageFrom": [
