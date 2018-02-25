@@ -1,5 +1,5 @@
 var setPath = require('object-path-set');
-var obj = {foo:{bar:'baz'}};
+var obj = { foo: { bar: 'baz' } };
 console.log(obj);
 obj = setPath(obj, 'foo.bar', 'newValue'); // result: {foo:{bar:'newValue'}}
 console.log(obj);
