@@ -44,6 +44,19 @@ obj = setPath(obj, 'foo|bar', 'again', '|'); // result: {foo:{bar:'again',invali
 - [Live example on Tonic](https://tonicdev.com/npm/object-path-set)
 
 
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://avatars1.githubusercontent.com/u/434470?v=4" width="100px;"/><br /><sub><b>◬</b></sub>](https://www.skratchdot.com/)<br />[💻](https://github.com/skratchdot/object-path-set/commits?author=skratchdot "Code") [📖](https://github.com/skratchdot/object-path-set/commits?author=skratchdot "Documentation") |
+| :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
+
+
 ## License
 
 Copyright (c) 2014 skratchdot  

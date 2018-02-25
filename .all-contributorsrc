@@ -1,0 +1,23 @@
+{
+  "projectName": "object-path-set",
+  "projectOwner": "skratchdot",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "skratchdot",
+      "name": "◬",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/434470?v=4",
+      "profile": "https://www.skratchdot.com/",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    }
+  ]
+}
