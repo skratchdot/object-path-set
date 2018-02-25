@@ -26,7 +26,7 @@ as a module.
 
 ## Getting Started
 
-Install the module with: `npm install object-path-set`
+Install the module with: `npm install --save object-path-set`
 
 ```javascript
 var setPath = require('object-path-set');
@@ -40,7 +40,7 @@ obj = setPath(obj, 'foo|bar', 'again', '|'); // result: {foo:{bar:'again',invali
 
 * [Source Code](https://github.com/skratchdot/object-path-set)
 * [Changelog](https://github.com/skratchdot/object-path-set/blob/master/CHANGELOG.md)
-* [Live example on Tonic](https://tonicdev.com/npm/object-path-set)
+* [Live example on Runkit](https://npm.runkit.com/object-path-set)
 
 ## Contributors
 
