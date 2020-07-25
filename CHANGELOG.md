@@ -1,11 +1,13 @@
-<a name="Unreleased"></a>
+<a name="1.0.1"></a>
 
-## Unreleased (2018-02-25)
+## <small>1.0.1 (2020-07-25)</small>
 
 * add prettier and `npm run build` ([1f34461](https://github.com/skratchdot/object-path-set/commit/1f34461))
 * adding contributors ([5bf6e83](https://github.com/skratchdot/object-path-set/commit/5bf6e83))
+* Bump eslint from 4.18.1 to 4.18.2 ([1756583](https://github.com/skratchdot/object-path-set/commit/1756583))
+* fix prototype pollution vulnerability ([e3108fe](https://github.com/skratchdot/object-path-set/commit/e3108fe))
 * rename tonic to runkit ([9c2f1ea](https://github.com/skratchdot/object-path-set/commit/9c2f1ea))
-* small readme tweaks ([883d400](https://github.com/skratchdot/object-path-set/commit/883d400))
+* small readme tweaks ([9750b7a](https://github.com/skratchdot/object-path-set/commit/9750b7a))
 * travis runs node 6+ ([ac1969b](https://github.com/skratchdot/object-path-set/commit/ac1969b))
 * update travis config ([9c5a14e](https://github.com/skratchdot/object-path-set/commit/9c5a14e))
 * updating changelog and changelog generator ([216d2e7](https://github.com/skratchdot/object-path-set/commit/216d2e7))

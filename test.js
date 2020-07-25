@@ -100,4 +100,29 @@ describe('object-path-set', function() {
     obj2[''] = defaultValue;
     expect(setPath(obj, '', defaultValue)).toEqual(obj2);
   });
+  it('should not pollute __proto__', function() {
+    var obj = {};
+    expect(obj.polluted).toBeUndefined();
+    setPath(obj, '__proto__.polluted', 'yes');
+    var obj2 = {};
+    expect(obj.polluted).toBeUndefined();
+    expect(obj2.polluted).toBeUndefined();
+  });
+  it('should not pollute constructor', function() {
+    var obj = {};
+    expect(obj.polluted).toBeUndefined();
+    setPath(obj, 'constructor.polluted', 'yes');
+    var obj2 = {};
+    expect(obj.polluted).toBeUndefined();
+    expect(obj2.polluted).toBeUndefined();
+  });
+  it('should not pollute prototype', function() {
+    var obj = {};
+    expect(obj.polluted).toBeUndefined();
+    setPath(obj, 'prototype.polluted', 'yes');
+    // eslint-disable-next-line
+    var obj2 = new Object();
+    expect(obj.polluted).toBeUndefined();
+    expect(obj2.polluted).toBeUndefined();
+  });
 });
