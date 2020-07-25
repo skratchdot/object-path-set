@@ -38,9 +38,9 @@ obj = setPath(obj, 'foo|bar', 'again', '|'); // result: {foo:{bar:'again',invali
 
 ## Links
 
-* [Source Code](https://github.com/skratchdot/object-path-set)
-* [Changelog](https://github.com/skratchdot/object-path-set/blob/master/CHANGELOG.md)
-* [Live example on Runkit](https://npm.runkit.com/object-path-set)
+- [Source Code](https://github.com/skratchdot/object-path-set)
+- [Changelog](https://github.com/skratchdot/object-path-set/blob/master/CHANGELOG.md)
+- [Live example on Runkit](https://npm.runkit.com/object-path-set)
 
 ## Contributors
 

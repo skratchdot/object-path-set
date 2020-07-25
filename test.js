@@ -2,7 +2,7 @@
 var setPath = require('./index.js');
 var now = new Date();
 var obj;
-var getDefaultObject = function() {
+var getDefaultObject = function () {
   return {
     nested: {
       thing: {
@@ -21,11 +21,11 @@ var getDefaultObject = function() {
   };
 };
 
-describe('object-path-set', function() {
-  beforeEach(function() {
+describe('object-path-set', function () {
+  beforeEach(function () {
     obj = getDefaultObject();
   });
-  it('should be able to set and overwrite types', function() {
+  it('should be able to set and overwrite types', function () {
     var newValue = 'newValue';
 
     obj = setPath(obj, 'dataUndefined', newValue);
@@ -45,7 +45,7 @@ describe('object-path-set', function() {
     expect(typeof obj.nested.foo).toBe('string');
     expect(obj.nested.foo).toBe(newValue);
   });
-  it('should covert things to objects', function() {
+  it('should covert things to objects', function () {
     expect(setPath(1234, 'a', 42)).toEqual({ a: 42 });
     expect(setPath(null, 'a', 42)).toEqual({ a: 42 });
     expect(setPath(true, 'a', 42)).toEqual({ a: 42 });
@@ -54,26 +54,26 @@ describe('object-path-set', function() {
       a: { b: { c: { d: null } } }
     });
   });
-  it('should be able to use custom delimiters', function() {
+  it('should be able to use custom delimiters', function () {
     expect(setPath({}, 'a|b|c|d', 42)).toEqual({ 'a|b|c|d': 42 });
     expect(setPath({}, 'a|b|c|d', 42, '|')).toEqual({
       a: { b: { c: { d: 42 } } }
     });
     expect(setPath({}, 'a.b.c.d', 42, '|')).toEqual({ 'a.b.c.d': 42 });
   });
-  it('should set the correct values', function() {
+  it('should set the correct values', function () {
     expect(setPath({}, 'a.b', 42)).toEqual({ a: { b: 42 } });
     expect(setPath({}, 'a.b', undefined)).toEqual({ a: { b: undefined } });
     expect(setPath({}, 'a.b', true)).toEqual({ a: { b: true } });
     expect(setPath({}, 'a.b', 'wow')).toEqual({ a: { b: 'wow' } });
   });
-  it('should handle arrays as paths', function() {
+  it('should handle arrays as paths', function () {
     expect(setPath({}, ['a', 'b'], 42)).toEqual({ a: { b: 42 } });
     expect(setPath({}, ['a', 'b'], undefined)).toEqual({ a: { c: undefined } });
     expect(setPath({}, ['a', 'b'], true)).toEqual({ a: { b: true } });
     expect(setPath({}, ['a', 'b'], 'wow')).toEqual({ a: { b: 'wow' } });
   });
-  it('should be able to be called multiple times', function() {
+  it('should be able to be called multiple times', function () {
     obj = {};
     obj = setPath(obj, 'a', 42);
     obj = setPath(obj, 'b', true);
@@ -82,25 +82,25 @@ describe('object-path-set', function() {
     obj = setPath(obj, 'c.d.f', 'foo');
     expect(obj).toEqual({ a: 42, b: true, c: { d: { e: {}, f: 'foo' } } });
   });
-  it('should return the default object when key is not a string or array', function() {
+  it('should return the default object when key is not a string or array', function () {
     var defaultValue = Math.random();
-    [{}, null, 42, undefined, true].forEach(function(path) {
+    [{}, null, 42, undefined, true].forEach(function (path) {
       expect(setPath(getDefaultObject(), path, defaultValue)).toEqual(
         getDefaultObject()
       );
     });
   });
-  it('should return the default object when key is an empty array', function() {
+  it('should return the default object when key is an empty array', function () {
     var defaultValue = Math.random();
     expect(setPath(obj, [], defaultValue)).toEqual(getDefaultObject());
   });
-  it('should allow empty strings as a path', function() {
+  it('should allow empty strings as a path', function () {
     var defaultValue = Math.random();
     var obj2 = getDefaultObject();
     obj2[''] = defaultValue;
     expect(setPath(obj, '', defaultValue)).toEqual(obj2);
   });
-  it('should not pollute __proto__', function() {
+  it('should not pollute __proto__', function () {
     var obj = {};
     expect(obj.polluted).toBeUndefined();
     setPath(obj, '__proto__.polluted', 'yes');
@@ -108,7 +108,7 @@ describe('object-path-set', function() {
     expect(obj.polluted).toBeUndefined();
     expect(obj2.polluted).toBeUndefined();
   });
-  it('should not pollute constructor', function() {
+  it('should not pollute constructor', function () {
     var obj = {};
     expect(obj.polluted).toBeUndefined();
     setPath(obj, 'constructor.polluted', 'yes');
@@ -116,7 +116,7 @@ describe('object-path-set', function() {
     expect(obj.polluted).toBeUndefined();
     expect(obj2.polluted).toBeUndefined();
   });
-  it('should not pollute prototype', function() {
+  it('should not pollute prototype', function () {
     var obj = {};
     expect(obj.polluted).toBeUndefined();
     setPath(obj, 'prototype.polluted', 'yes');

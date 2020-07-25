@@ -11,7 +11,7 @@
     "contributors:generate": "all-contributors generate",
     "cover": "npm test -- --coverage",
     "coveralls": "cat coverage/lcov.info | coveralls --verbose",
-    "format": "prettier --single-quote --write '*{.js,.md}' '.*.js'",
+    "format": "prettier --single-quote --trailing-comma=none --write '*{.js,.md}' '.*.js'",
     "lint": "eslint *.js",
     "prepublish": "npm run build",
     "test": "jest test.js",
