@@ -6,18 +6,18 @@ var getDefaultObject = function () {
   return {
     nested: {
       thing: {
-        foo: 'bar'
+        foo: 'bar',
       },
       is: {
-        cool: true
-      }
+        cool: true,
+      },
     },
     dataUndefined: undefined,
     dataDate: now,
     dataNumber: 42,
     dataString: 'foo',
     dataNull: null,
-    dataBoolean: true
+    dataBoolean: true,
   };
 };
 
@@ -51,13 +51,13 @@ describe('object-path-set', function () {
     expect(setPath(true, 'a', 42)).toEqual({ a: 42 });
     expect(setPath({ a: 123 }, 'a.b', 42)).toEqual({ a: { b: 42 } });
     expect(setPath(null, 'a.b.c.d', null)).toEqual({
-      a: { b: { c: { d: null } } }
+      a: { b: { c: { d: null } } },
     });
   });
   it('should be able to use custom delimiters', function () {
     expect(setPath({}, 'a|b|c|d', 42)).toEqual({ 'a|b|c|d': 42 });
     expect(setPath({}, 'a|b|c|d', 42, '|')).toEqual({
-      a: { b: { c: { d: 42 } } }
+      a: { b: { c: { d: 42 } } },
     });
     expect(setPath({}, 'a.b.c.d', 42, '|')).toEqual({ 'a.b.c.d': 42 });
   });
@@ -104,6 +104,14 @@ describe('object-path-set', function () {
     var obj = {};
     expect(obj.polluted).toBeUndefined();
     setPath(obj, '__proto__.polluted', 'yes');
+    var obj2 = {};
+    expect(obj.polluted).toBeUndefined();
+    expect(obj2.polluted).toBeUndefined();
+  });
+  it('should not pollute __proto__ when using arrays', function () {
+    var obj = {};
+    expect(obj.polluted).toBeUndefined();
+    setPath(obj, [['__proto__'], 'polluted'], 'yes');
     var obj2 = {};
     expect(obj.polluted).toBeUndefined();
     expect(obj2.polluted).toBeUndefined();

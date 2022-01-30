@@ -2,7 +2,12 @@
 
 // https://github.com/jonschlinkert/assign-deep/commit/90bf1c551d05940898168d04066bbf15060f50cc
 var isValidKey = function (key) {
-  return key !== '__proto__' && key !== 'constructor' && key !== 'prototype';
+  return (
+    typeof key === 'string' &&
+    key !== '__proto__' &&
+    key !== 'constructor' &&
+    key !== 'prototype'
+  );
 };
 
 var setPath = function (obj, path, value, delimiter) {
