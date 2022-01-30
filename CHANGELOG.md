@@ -1,4 +1,6 @@
-## Unreleased (2022-01-30)
+## <small>1.0.2 (2022-01-30)</small>
+
+- fix new prototype pollution vulnerability ([2d67a71](https://github.com/skratchdot/object-path-set/commit/2d67a71))
 
 ## <small>1.0.1 (2020-07-25)</small>
 
